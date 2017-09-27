@@ -13,7 +13,7 @@ import java.sql.*;
 public class Main {
 
     public static final String driverClass = "com.mysql.jdbc.Driver";
-    public static final String url = "jdbc:mysql://localhost:3306?mybatis?charset=utf8";
+    public static final String url = "jdbc:mysql://localhost:3306/mybatis?charset=utf8";
     public static final String username = "mybatis";
     public static final String password = "mybatis";
     static Connection conn = null;
@@ -26,7 +26,7 @@ public class Main {
             conn = DriverManager.getConnection(url, username, password);
             String sql = "SELECT * FROM user WHERE username = ?";
             psts = conn.prepareStatement(sql);
-            psts.setString(1, "ww");
+            psts.setString(1, "刘二狗");
             rs = psts.executeQuery();
             while (rs.next()) {
                 System.out.println(rs.getString("id") + " : " + rs.getString("username"));
