@@ -17,6 +17,7 @@
         parameterType：输入参数类型
         resultType：单条记录输出类型所映射的Java对象 - 字段必须与数据库字段一一对应 TODO 单条记录类型
         #{id}：输入参数名称；cxy 如果参数是基本数据类型，#{}是占位符，其中的参数名可以任意，可以使用value字符或其他支付
+        TODO parameterType 所定义的是 java 类型，而在 sql 中实际接收的是 jdbc 类型 - mybatis 使用内置的类型转换器进行了转换（一般情况下不需要进行自定义。可在 sqlMapConfig.xml 中通过 typeHandlers 标签进行只定义 ）
     -->
     <select id="findUserById" parameterType="int" resultType="cn.cxy.first.model.User">
         SELECT *
