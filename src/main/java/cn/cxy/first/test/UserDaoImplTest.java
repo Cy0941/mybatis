@@ -1,7 +1,7 @@
 package cn.cxy.first.test;
 
-import cn.cxy.first.dao.UserDao;
-import cn.cxy.first.dao.UserDaoImpl;
+import cn.cxy.first.dao.old.UserDao;
+import cn.cxy.first.dao.old.UserDaoImpl;
 import cn.cxy.first.model.User;
 import junit.framework.TestCase;
 import org.apache.ibatis.io.Resources;

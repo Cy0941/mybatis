@@ -1,4 +1,4 @@
-package cn.cxy.first.dao;
+package cn.cxy.first.dao.old;
 
 import cn.cxy.first.model.User;
 import org.apache.ibatis.session.SqlSession;

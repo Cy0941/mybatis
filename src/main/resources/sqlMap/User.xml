@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!--使用传统 xml 进行 sql 映射-->
+
 <!--
     命名空间：对sql进行分组、隔离
     TODO 使用 mapper 代理方法开发，namespace 有特殊的重要作用
