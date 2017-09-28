@@ -12,6 +12,13 @@
 <mapper namespace="cn.cxy.first.dao.mapper.UserMapper">
     <!--在映射文件中配置sql语句-->
 
+
+    <select id="findUserList" parameterType="cn.cxy.first.vo.UserQueryVo" resultType="cn.cxy.first.model.UserCustomer">
+        SELECT *
+        FROM user
+        WHERE sex = #{user.sex} AND username LIKE '%${user.username}%'
+    </select>
+
     <!--
         id：标识映射文件中的sql - 将SQL语句封装到 mappedStatement对象中，作为statement的id
         parameterType：输入参数类型

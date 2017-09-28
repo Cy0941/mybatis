@@ -1,6 +1,8 @@
 package cn.cxy.first.dao.mapper;
 
 import cn.cxy.first.model.User;
+import cn.cxy.first.model.UserCustomer;
+import cn.cxy.first.vo.UserQueryVo;
 
 import java.util.List;
 
@@ -17,6 +19,8 @@ import java.util.List;
  * @since: Thinkingbar Web Project 1.0
  */
 public interface UserMapper {
+
+    List<UserCustomer> findUserList(UserQueryVo vo) throws Exception;
 
     User findUserById(int id) throws Exception;
 

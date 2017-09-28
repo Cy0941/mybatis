@@ -24,7 +24,7 @@
     <!--别名定义：便于在mapper.xml中进行简单引用-->
     <typeAliases>
         <!--单个类别名定义-->
-        <typeAlias type="cn.cxy.first.model.User" alias="user"/>
+        <!--<typeAlias type="cn.cxy.first.model.User" alias="user"/>-->
         <!--批量定义：具体的别名名称为类名或类名首字母大小写均可-->
         <package name="cn.cxy.first.model"/>
     </typeAliases>
@@ -53,9 +53,9 @@
             在采用 mapper 代理开发的情况下通过 mapper 接口进行加载
                 前提条件：mapper.java与mapper.xml文件名必须保持一致且在同一目录中
         -->
-        <mapper class="cn.cxy.first.dao.mapper.UserMapper"/><!--采用mapper开发时效果一致-->
+        <!--<mapper class="cn.cxy.first.dao.mapper.UserMapper"/>&lt;!&ndash;采用mapper开发时效果一致&ndash;&gt;-->
         <!--批量引入-->
-        <package name="cn.cxy.first.dao"/>
+        <!--<package name="cn.cxy.first.dao.mapper"/>-->
 
     </mappers>
 

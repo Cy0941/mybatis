@@ -2,6 +2,8 @@ package cn.cxy.first.test;
 
 import cn.cxy.first.dao.mapper.UserMapper;
 import cn.cxy.first.model.User;
+import cn.cxy.first.model.UserCustomer;
+import cn.cxy.first.vo.UserQueryVo;
 import junit.framework.TestCase;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -9,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Function: TODO
@@ -26,6 +29,18 @@ public class UserMapperTest extends TestCase {
         String resource = "sqlMapConfig_1.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         factory = new SqlSessionFactoryBuilder().build(inputStream);
+    }
+
+    public void testFindUserList() throws Exception{
+        SqlSession sqlSession = factory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        UserQueryVo vo = new UserQueryVo();
+        UserCustomer customer = new UserCustomer();
+        customer.setSex(1);
+        customer.setUsername("测试");
+        vo.setUser(customer);
+        List<UserCustomer> userList = mapper.findUserList(vo);
+        System.err.println(userList);
     }
 
     public void testFindUserById() throws Exception {
