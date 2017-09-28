@@ -5,17 +5,26 @@
 <!--MyBaits根配置文件：主要用用于配置数据库事务等-->
 <configuration>
     <!--加载属性文件-->
-    <properties resource="db.properties"/>
+    <properties resource="db.properties">
+        <!--
+            MyBatis 将按照如下顺序进行解析 properties 标签
+                1、在 properties 元素体内定义的 property 属性会被优先读取
+                2、然后读取 properties 元素中 resource/url 加载的属性，会覆盖已读取的同名属性值
+                3、最后读取 parameterType 传递的属性，会覆盖已读取的同名属性值
+            cxy 建议：1、不要在 properties 元素体内定义任何属性值，只定义在对应的属性文件中即可；2、properties 文件中的属性名称必须要有一定的辨识度
+        -->
+        <!--<property name="testName" value="testValue"/>-->
+    </properties>
     <!--与 spring 整合后此配置废除-->
     <environments default="development">
         <environment id="development">
             <!--MyBatis 接管事务及数据库连接池-->
             <transactionManager type="JDBC"></transactionManager>
             <dataSource type="POOLED">
-                <property name="driver" value="${driver}"/>
-                <property name="url" value="${url}"/>
-                <property name="username" value="${username}"/>
-                <property name="password" value="${password}"/>
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
