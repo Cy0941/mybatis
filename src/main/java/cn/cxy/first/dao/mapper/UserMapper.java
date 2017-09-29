@@ -20,6 +20,8 @@ import java.util.List;
  */
 public interface UserMapper {
 
+    List<User> findConditionsUserList(UserQueryVo vo) throws Exception;
+
     List<User> findUserResultMap(UserQueryVo vo) throws Exception;
 
     List<UserCustomer> findUserList(UserQueryVo vo) throws Exception;

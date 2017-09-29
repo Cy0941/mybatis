@@ -25,6 +25,25 @@
         WHERE sex = #{user.sex} AND username LIKE '%${user.username}%'
     </select>
 
+
+    <!--条件sql实现-->
+    <select id="findConditionsUserList" parameterType="cn.cxy.first.vo.UserQueryVo"
+            resultType="cn.cxy.first.model.UserCustomer">
+        SELECT *
+        FROM user
+        /* where - 会自动去掉满足条件的第一个and关键字 */
+        <where>
+            <if test="user != null">
+                <if test="user.sex != null">
+                    AND sex = #{user.sex}
+                </if>
+                <if test="user.username != null">
+                    AND username LIKE '%${user.username}%'
+                </if>
+            </if>
+        </where>
+    </select>
+
     <!--resultMap使用：在sql返回结果与实际pojo属性名无法一一对应时使用此属性进行转换-->
     <resultMap id="userResultMap" type="user"><!--尝试映射为 type 类型-->
         <id column="id_" property="id"/><!--主键属性单独处理-->

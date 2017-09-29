@@ -56,6 +56,22 @@ public class UserMapperTest extends TestCase {
         System.err.println(userList);
     }
 
+    /**
+     * 动态 sql 测试
+     * @throws Exception
+     */
+    public void testFindConditionsUserList() throws Exception {
+        SqlSession sqlSession = factory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        UserQueryVo vo = new UserQueryVo();
+        UserCustomer customer = new UserCustomer();
+        customer.setSex(1);
+        customer.setUsername("测试");
+        vo.setUser(customer);
+        List<User> userList = mapper.findConditionsUserList(null);
+        System.err.println(userList);
+    }
+
     public void testFindUserById() throws Exception {
         SqlSession sqlSession = factory.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
