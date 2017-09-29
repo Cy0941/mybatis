@@ -31,7 +31,7 @@ public class UserMapperTest extends TestCase {
         factory = new SqlSessionFactoryBuilder().build(inputStream);
     }
 
-    public void testFindUserList() throws Exception{
+    public void testFindUserList() throws Exception {
         SqlSession sqlSession = factory.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         UserQueryVo vo = new UserQueryVo();
@@ -40,6 +40,19 @@ public class UserMapperTest extends TestCase {
         customer.setUsername("测试");
         vo.setUser(customer);
         List<UserCustomer> userList = mapper.findUserList(vo);
+        int count = mapper.findUserCount(vo);
+        System.err.println(count + " : " + userList);
+    }
+
+    public void testFindUserResultMap() throws Exception {
+        SqlSession sqlSession = factory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        UserQueryVo vo = new UserQueryVo();
+        UserCustomer customer = new UserCustomer();
+        customer.setSex(1);
+        customer.setUsername("测试");
+        vo.setUser(customer);
+        List<User> userList = mapper.findUserResultMap(vo);
         System.err.println(userList);
     }
 

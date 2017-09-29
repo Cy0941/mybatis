@@ -20,7 +20,11 @@ import java.util.List;
  */
 public interface UserMapper {
 
+    List<User> findUserResultMap(UserQueryVo vo) throws Exception;
+
     List<UserCustomer> findUserList(UserQueryVo vo) throws Exception;
+
+    int findUserCount(UserQueryVo vo) throws Exception;
 
     User findUserById(int id) throws Exception;
 

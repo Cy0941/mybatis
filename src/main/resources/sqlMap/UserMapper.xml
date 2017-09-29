@@ -19,6 +19,25 @@
         WHERE sex = #{user.sex} AND username LIKE '%${user.username}%'
     </select>
 
+    <select id="findUserCount" parameterType="cn.cxy.first.vo.UserQueryVo" resultType="int">
+        SELECT count(*)
+        FROM user
+        WHERE sex = #{user.sex} AND username LIKE '%${user.username}%'
+    </select>
+
+    <!--resultMap使用：在sql返回结果与实际pojo属性名无法一一对应时使用此属性进行转换-->
+    <resultMap id="userResultMap" type="user"><!--尝试映射为 type 类型-->
+        <id column="id_" property="id"/><!--主键属性单独处理-->
+        <result column="username_" property="username"/>
+    </resultMap>
+    <select id="findUserResultMap" parameterType="cn.cxy.first.vo.UserQueryVo" resultMap="userResultMap">
+        SELECT
+            id       id_,
+            username username_
+        FROM user
+        WHERE sex = #{user.sex} AND username LIKE '%${user.username}%'
+    </select>
+
     <!--
         id：标识映射文件中的sql - 将SQL语句封装到 mappedStatement对象中，作为statement的id
         parameterType：输入参数类型
