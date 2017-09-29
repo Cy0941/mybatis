@@ -4,6 +4,8 @@ import cn.cxy.first.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 /**
  * Function: 自定义查询实体
  * Reason: TODO ADD REASON(可选).</br>
@@ -18,6 +20,10 @@ import lombok.Setter;
 public class UserQueryVo {
 
     private User user;
+
+    private List<Integer> ids;
+
+    private List<String> names;
 
     //TODO 其他必要的查询参数
 

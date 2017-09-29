@@ -24,6 +24,20 @@
             <if test="user.username != null">
                 AND username LIKE '%${user.username}%'
             </if>
+
+            <!--使用 foreach 进行批量设值-->
+            <if test="ids != null">
+                <!--AND (id = 1 OR id = 2 OR id = 3)-->
+                <foreach collection="ids" item="user_id" open="AND (" close=")" separator="OR">
+                    id = #{user_id}
+                </foreach>
+            </if>
+            <if test="names != null">
+                <!--AND username IN (1,2,3)-->
+                <foreach collection="names" item="user_name" open="AND username IN (" close=")" separator=",">
+                    #{user_name}
+                </foreach>
+            </if>
         </if>
     </sql>
 
@@ -32,7 +46,7 @@
         SELECT *
         FROM user
         <where>
-            /*对抽取的sql进行引用；如果被引入的sql不再当前文件中-通过 namespace 进行精确引用*/
+            <!--对抽取的sql进行引用；如果被引入的sql不再当前文件中-通过 namespace 进行精确引用-->
           <include refid="user_query_condition"/>
         </where>
     </select>

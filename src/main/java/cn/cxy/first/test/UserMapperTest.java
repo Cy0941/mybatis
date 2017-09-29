@@ -11,6 +11,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,6 +40,25 @@ public class UserMapperTest extends TestCase {
         customer.setSex(1);
         customer.setUsername("测试");
         vo.setUser(customer);
+        List<Integer> ids = new ArrayList<Integer>(){{
+            add(1);
+            add(2);
+            add(3);
+            add(4);
+            add(5);
+            add(6);
+            add(7);
+            add(8);
+        }};
+        vo.setIds(ids);
+        List<String> names = new ArrayList<String>(){{
+            add("李二蛋");
+            add("张三丰");
+            add("测试2");
+            add("茅台");
+            add("李明慧");
+        }};
+        vo.setNames(names);
         List<UserCustomer> userList = mapper.findUserList(vo);
         int count = mapper.findUserCount(vo);
         System.err.println(count + " : " + userList);
