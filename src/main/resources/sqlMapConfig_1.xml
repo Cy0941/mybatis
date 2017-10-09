@@ -48,6 +48,7 @@
         <!--传统开发方式加载映射文件-->
         <mapper resource="sqlMap/User.xml"/>
         <mapper resource="sqlMap/UserMapper.xml"/>
+        <mapper resource="sqlMap/UserOrderMapper.xml"/>
 
         <!--
             在采用 mapper 代理开发的情况下通过 mapper 接口进行加载

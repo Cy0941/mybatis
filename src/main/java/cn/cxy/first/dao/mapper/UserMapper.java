@@ -10,7 +10,7 @@ import java.util.List;
  * Function: 采用 mapper 代理开发DAO
  * 开发规范：
  *      1、对应 mapper.xml 中的 namespace 为当前 java 的全类名
- *      2、方法名与对应 mapper.xml 文件中 sql 的 id ；参数类型及返回值必须意义对应
+ *      2、方法名与对应 mapper.xml 文件中 sql 的 id ；参数类型及返回值必须一一对应
  *      3、mapper 接口中只能允许一个参数  -  需要多参数时可以采用包装类型解决（java.util.Map 等）  --  不利于业务扩展
  * Reason: TODO ADD REASON(可选).</br>
  * Date: 2017/9/28 7:57 </br>
