@@ -5,6 +5,7 @@
 
 <mapper namespace="cn.cxy.mybatis.dao.mapper.UserOrderMapper">
 
+    <!--使用resultType实现-->
     <select id="findUserOrder" resultType="cn.cxy.mybatis.vo.UserOrderVo">
         SELECT
             o.*,
