@@ -19,4 +19,6 @@ public interface UserOrderMapper {
 
     List<Orders> findUserOrderResultMap() throws Exception;
 
+    List<Orders> findOrderAndOrderDetailResultMap() throws Exception;
+
 }

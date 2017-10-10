@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Function: TODO
@@ -28,5 +29,8 @@ public class Orders {
 
     //使用resultMap实现一对一查询结果封装 TODO resultMap 可以实现延迟加载
     private User user;
+
+    //使用resultMap实现一对多查询
+    private List<OrderDetails> orderDetails;
 
 }

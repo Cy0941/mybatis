@@ -20,6 +20,15 @@
         </association>
     </resultMap>
 
+    <!--extends属性通过继承去除自定义resultMap之间的相同属性映射-->
+    <resultMap id="orderAndOrderDetailResultMap" type="orders" extends="userOrderResultMap">
+        <collection property="orderDetails" ofType="orderDetails">
+            <id column="detail_id" property="id"/>
+            <result column="items_id" property="itemId"/>
+            <result column="items_num" property="itemNum"/>
+        </collection>
+    </resultMap>
+
     <!--使用resultType实现-->
     <select id="findUserOrder" resultType="cn.cxy.mybatis.vo.UserOrderVo">
         SELECT
@@ -34,12 +43,26 @@
     <!--使用resultMap实现-->
     <select id="findUserOrderResultMap" resultMap="userOrderResultMap">
         SELECT
-        o.*,
-        u.id,
-        u.sex,
-        u.username
+            o.*,
+            u.id,
+            u.sex,
+            u.username
         FROM orders o, user u
         WHERE o.user_id = u.id
+    </select>
+
+    <!--通过 resultMap 实现一对多查询结果包装-->
+    <select id="findOrderAndOrderDetailResultMap" resultMap="orderAndOrderDetailResultMap">
+        SELECT
+            o.*,
+            u.id,
+            u.sex,
+            u.username,
+            od.id detail_id,
+            od.items_id,
+            od.items_num
+        FROM orders o, user u, orders_detail od
+        WHERE o.user_id = u.id AND od.orders_id = o.id
     </select>
 
 

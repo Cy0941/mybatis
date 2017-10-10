@@ -37,6 +37,14 @@ public class UserOrderMapperTest extends TestCase {
         sqlSession.close();
     }
 
+    public void testFindOrderAndOrderDetailResultMap() throws Exception {
+        sqlSession = factory.openSession();
+        UserOrderMapper mapper = sqlSession.getMapper(UserOrderMapper.class);
+        List<Orders> ordersList = mapper.findOrderAndOrderDetailResultMap();
+        System.err.println(ordersList);
+        sqlSession.close();
+    }
+
     public void setUp() throws Exception {
         String resource = "mybatis_config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
