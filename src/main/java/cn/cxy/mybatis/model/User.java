@@ -1,4 +1,4 @@
-package cn.cxy.first.model;
+package cn.cxy.mybatis.model;
 
 import lombok.Getter;
 import lombok.Setter;

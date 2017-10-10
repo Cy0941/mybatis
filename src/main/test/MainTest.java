@@ -1,6 +1,4 @@
-package cn.cxy.first.test;
-
-import cn.cxy.first.model.User;
+import cn.cxy.mybatis.model.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -104,7 +102,7 @@ public class MainTest {
 
     @Before
     public void setUp() throws Exception {
-        String resource = "sqlMapConfig_1.xml";
+        String resource = "mybatis_config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         SqlSessionFactory factory =  new SqlSessionFactoryBuilder().build(inputStream);
         sqlSession = factory.openSession();

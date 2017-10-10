@@ -1,9 +1,9 @@
 /**
- * Function: sql映射文件 - 传统 sql 映射
+ * Function: 传统 dao 开发
  * Reason: TODO ADD REASON(可选).</br>
- * Date: 2017/9/27 7:53 </br>
+ * Date: 2017/9/28 21:30 </br>
  *
  * @author: cx.yang
  * @since: Thinkingbar Web Project 1.0
  */
-package cn.cxy.first.mapper;
+package cn.cxy.mybatis.dao.old;

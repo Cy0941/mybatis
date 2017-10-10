@@ -1,6 +1,6 @@
-package cn.cxy.first.vo;
+package cn.cxy.mybatis.vo;
 
-import cn.cxy.first.model.User;
+import cn.cxy.mybatis.model.User;
 import lombok.Getter;
 import lombok.Setter;
 

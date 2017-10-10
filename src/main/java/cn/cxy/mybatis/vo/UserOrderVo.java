@@ -1,6 +1,6 @@
-package cn.cxy.first.vo;
+package cn.cxy.mybatis.vo;
 
-import cn.cxy.first.model.Orders;
+import cn.cxy.mybatis.model.Orders;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

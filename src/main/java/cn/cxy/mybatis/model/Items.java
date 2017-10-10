@@ -1,4 +1,4 @@
-package cn.cxy.first.model;
+package cn.cxy.mybatis.model;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Function: TODO
  * Reason: TODO ADD REASON(可选).</br>
- * Date: 2017/10/9 21:40 </br>
+ * Date: 2017/10/9 21:45 </br>
  *
  * @author: cx.yang
  * @since: Thinkingbar Web Project 1.0
@@ -16,12 +16,13 @@ import java.util.Date;
 
 @Setter
 @Getter
-public class Orders {
+public class Items {
 
     private Integer id;
-    private String number;
-    private Integer userId;
+    private String name;
+    private Float price;
+    private String detail;
     private Date createTime;
-    private String note;
+
 
 }

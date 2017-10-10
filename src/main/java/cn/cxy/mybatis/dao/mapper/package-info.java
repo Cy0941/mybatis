@@ -6,4 +6,4 @@
  * @author: cx.yang
  * @since: Thinkingbar Web Project 1.0
  */
-package cn.cxy.first.dao.mapper;
+package cn.cxy.mybatis.dao.mapper;

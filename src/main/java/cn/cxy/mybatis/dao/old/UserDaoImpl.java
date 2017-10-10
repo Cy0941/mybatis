@@ -1,6 +1,6 @@
-package cn.cxy.first.dao.old;
+package cn.cxy.mybatis.dao.old;
 
-import cn.cxy.first.model.User;
+import cn.cxy.mybatis.model.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 

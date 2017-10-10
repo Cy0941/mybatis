@@ -1,6 +1,6 @@
-package cn.cxy.first.dao.mapper;
+package cn.cxy.mybatis.dao.mapper;
 
-import cn.cxy.first.vo.UserOrderVo;
+import cn.cxy.mybatis.vo.UserOrderVo;
 
 import java.util.List;
 

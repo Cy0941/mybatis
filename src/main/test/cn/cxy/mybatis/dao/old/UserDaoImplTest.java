@@ -1,8 +1,6 @@
-package cn.cxy.first.test;
+package cn.cxy.mybatis.dao.old;
 
-import cn.cxy.first.dao.old.UserDao;
-import cn.cxy.first.dao.old.UserDaoImpl;
-import cn.cxy.first.model.User;
+import cn.cxy.mybatis.model.User;
 import junit.framework.TestCase;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -15,17 +13,16 @@ import java.util.List;
 /**
  * Function: TODO
  * Reason: TODO ADD REASON(可选).</br>
- * Date: 2017/9/28 8:08 </br>
+ * Date: 2017/10/10 20:38 </br>
  *
  * @author: cx.yang
  * @since: Thinkingbar Web Project 1.0
  */
 public class UserDaoImplTest extends TestCase {
-
     private SqlSessionFactory factory;
 
     public void setUp() throws Exception {
-        String resource = "sqlMapConfig_1.xml";
+        String resource = "mybatis_config.xml";
         InputStream inputStream = Resources.getResourceAsStream(resource);
         factory = new SqlSessionFactoryBuilder().build(inputStream);
     }

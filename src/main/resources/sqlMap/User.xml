@@ -18,7 +18,7 @@
         resultType：单条记录输出类型所映射的Java对象 - 字段必须与数据库字段一一对应 TODO 单条记录类型
         #{id}：输入参数名称；cxy 如果参数是基本数据类型，#{}是占位符，其中的参数名可以任意，可以使用value字符或其他支付
     -->
-    <select id="findUserById" parameterType="int" resultType="cn.cxy.first.model.User">
+    <select id="findUserById" parameterType="int" resultType="cn.cxy.mybatis.model.User">
         SELECT *
         FROM user
         WHERE id = #{id}
@@ -31,7 +31,7 @@
             2、可能会引起sql注入
             3、${value} 接收输入参数的内容，如果传入的是基本数据类型，${}中只能使用value字符串
     -->
-    <select id="findUserByName" parameterType="java.lang.String" resultType="cn.cxy.first.model.User">
+    <select id="findUserByName" parameterType="java.lang.String" resultType="cn.cxy.mybatis.model.User">
         SELECT *
         FROM user
         WHERE username LIKE '%${value}%'
@@ -41,7 +41,7 @@
         数据插入：
             sql 中的 value 值会根据对应的实体类进行自动解析
     -->
-    <insert id="addUser" parameterType="cn.cxy.first.model.User">
+    <insert id="addUser" parameterType="cn.cxy.mybatis.model.User">
         INSERT INTO user (username, birthday, sex, address) VALUES (#{username}, #{birthday}, #{sex}, #{address})
     </insert>
 
@@ -49,7 +49,7 @@
     <!--
         cxy 自增主键返回：insert成功后执行 SELECT last_insert_id() 并将值设置到参数 User 中
     -->
-    <insert id="autoIncrementId" parameterType="cn.cxy.first.model.User">
+    <insert id="autoIncrementId" parameterType="cn.cxy.mybatis.model.User">
         /*
         keyProperty - 对应 insert 标签中 parameterType 属性的属性
         order - 相对 insert 语句执行的顺序
@@ -64,7 +64,7 @@
     <!--
         cxy 非自增主键返回：主键为非自增；java.lang.String类型；长度为35
     -->
-    <insert id="handleIncrementId" parameterType="cn.cxy.first.model.User">
+    <insert id="handleIncrementId" parameterType="cn.cxy.mybatis.model.User">
         /*
         实现原理：先通过 uuid 函数获得主键并设置到参数对应属性，然后在进行 insert 操作
         */
@@ -80,7 +80,7 @@
         WHERE id = #{id}
     </delete>
 
-    <update id="updateUser" parameterType="cn.cxy.first.model.User">
+    <update id="updateUser" parameterType="cn.cxy.mybatis.model.User">
         UPDATE user
         SET username = #{username}, sex = #{sex}, birthday = #{birthday}, address = #{address}
         WHERE id = #{id}

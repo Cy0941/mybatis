@@ -1,4 +1,4 @@
-package cn.cxy.first.model;
+package cn.cxy.mybatis.model;
 
 /**
  * Function: 扩展 User 类 - 尽量不要对原来的实体类进行修改

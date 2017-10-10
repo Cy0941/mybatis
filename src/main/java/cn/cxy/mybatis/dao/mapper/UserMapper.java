@@ -1,8 +1,8 @@
-package cn.cxy.first.dao.mapper;
+package cn.cxy.mybatis.dao.mapper;
 
-import cn.cxy.first.model.User;
-import cn.cxy.first.model.UserCustomer;
-import cn.cxy.first.vo.UserQueryVo;
+import cn.cxy.mybatis.model.User;
+import cn.cxy.mybatis.model.UserCustomer;
+import cn.cxy.mybatis.vo.UserQueryVo;
 
 import java.util.List;
 
