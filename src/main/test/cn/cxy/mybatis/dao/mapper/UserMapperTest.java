@@ -24,6 +24,7 @@ import java.util.List;
 public class UserMapperTest extends TestCase {
 
     private SqlSessionFactory factory;
+    private SqlSession sqlSession;
 
     public void setUp() throws Exception {
         String resource = "mybatis_config.xml";
@@ -32,7 +33,7 @@ public class UserMapperTest extends TestCase {
     }
 
     public void testFindUserList() throws Exception {
-        SqlSession sqlSession = factory.openSession();
+        sqlSession = factory.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         UserQueryVo vo = new UserQueryVo();
         UserCustomer customer = new UserCustomer();
@@ -64,7 +65,7 @@ public class UserMapperTest extends TestCase {
     }
 
     public void testFindUserResultMap() throws Exception {
-        SqlSession sqlSession = factory.openSession();
+        sqlSession = factory.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         UserQueryVo vo = new UserQueryVo();
         UserCustomer customer = new UserCustomer();
@@ -81,7 +82,7 @@ public class UserMapperTest extends TestCase {
      * @throws Exception
      */
     public void testFindConditionsUserList() throws Exception {
-        SqlSession sqlSession = factory.openSession();
+        sqlSession = factory.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         UserQueryVo vo = new UserQueryVo();
         UserCustomer customer = new UserCustomer();
@@ -93,7 +94,7 @@ public class UserMapperTest extends TestCase {
     }
 
     public void testFindUserById() throws Exception {
-        SqlSession sqlSession = factory.openSession();
+        sqlSession = factory.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         User user = mapper.findUserById(1);
         System.out.println(user);
@@ -109,6 +110,11 @@ public class UserMapperTest extends TestCase {
 
     public void testAddUser() throws Exception {
         //TODO
+    }
+
+    @Override
+    public void tearDown() throws Exception {
+        sqlSession.close();
     }
 
 }

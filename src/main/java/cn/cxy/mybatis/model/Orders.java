@@ -26,4 +26,7 @@ public class Orders {
     private Date createTime;
     private String note;
 
+    //使用resultMap实现一对一查询结果封装 TODO resultMap 可以实现延迟加载
+    private User user;
+
 }

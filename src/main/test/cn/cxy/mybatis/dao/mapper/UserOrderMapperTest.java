@@ -1,5 +1,6 @@
 package cn.cxy.mybatis.dao.mapper;
 
+import cn.cxy.mybatis.model.Orders;
 import cn.cxy.mybatis.vo.UserOrderVo;
 import junit.framework.TestCase;
 import org.apache.ibatis.io.Resources;
@@ -20,7 +21,21 @@ import java.util.List;
  */
 public class UserOrderMapperTest extends TestCase {
 
-    private SqlSessionFactory factory;
+    public void testFindUserOrder() throws Exception {
+        sqlSession = factory.openSession();
+        UserOrderMapper mapper = sqlSession.getMapper(UserOrderMapper.class);
+        List<UserOrderVo> orderVoList = mapper.findUserOrder();
+        System.err.println(orderVoList);
+        sqlSession.close();
+    }
+
+    public void testFindUserOrderResultMap() throws Exception {
+        sqlSession = factory.openSession();
+        UserOrderMapper mapper = sqlSession.getMapper(UserOrderMapper.class);
+        List<Orders> ordersList = mapper.findUserOrderResultMap();
+        System.err.println(ordersList);
+        sqlSession.close();
+    }
 
     public void setUp() throws Exception {
         String resource = "mybatis_config.xml";
@@ -28,13 +43,11 @@ public class UserOrderMapperTest extends TestCase {
         factory = new SqlSessionFactoryBuilder().build(inputStream);
     }
 
-    public void testFindUserOrder() throws Exception {
-
-        SqlSession sqlSession = factory.openSession();
-        UserOrderMapper mapper = sqlSession.getMapper(UserOrderMapper.class);
-        List<UserOrderVo> orderVoList = mapper.findUserOrder();
-        System.err.println(orderVoList);
+    @Override
+    public void tearDown() throws Exception {
         sqlSession.close();
     }
 
+    private SqlSessionFactory factory;
+    private SqlSession sqlSession;
 }

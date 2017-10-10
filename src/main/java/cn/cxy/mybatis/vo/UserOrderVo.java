@@ -6,7 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * Function: TODO
+ * Function: 使用resultType实现一对一关联查询  --  继承自结果中字段较多的实体类，在相应引入对应属性
  * Reason: TODO ADD REASON(可选).</br>
  * Date: 2017/10/9 22:02 </br>
  *
@@ -20,6 +20,6 @@ public class UserOrderVo extends Orders {
 
     private String username;
     private Integer sex;
-    private Integer user_id;//数据库字段为 user_id 映射？？？
+    private Integer user_id;
 
 }
