@@ -21,7 +21,11 @@
         <setting name="" value=""/>
     </settings>-->
 
-    <!--别名定义：便于在mapper.xml中进行简单引用-->
+    <!--
+        别名定义：
+                便于在mapper.xml中进行简单引用
+                cxy 必须位于 properties 标签之后
+    -->
     <typeAliases>
         <!--单个类别名定义-->
         <!--<typeAlias type="cn.cxy.first.model.User" alias="user"/>-->
