@@ -29,6 +29,47 @@
         </collection>
     </resultMap>
 
+    <resultMap id="userItemsResultMap" type="user">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="birthday" property="birthday"/>
+        <result column="sex" property="sex"/>
+        <result column="address" property="address"/>
+
+        <collection property="ordersList" ofType="orders">
+            <id column="o_id" property="id"/>
+            <result column="o_number" property="number"/>
+
+            <collection property="orderDetails" ofType="orderDetails">
+                <id column="od_id" property="id"/>
+                <result column="od_items_id" property="itemId"/>
+                <result column="od_items_num" property="itemNum"/>
+
+                <association property="items" javaType="items">
+                    <id column="od_items_id" property="id"/>
+                    <result column="it_name" property="name"/>
+                    <result column="it_price" property="price"/>
+                    <result column="it_detail" property="detail"/>
+                </association>
+            </collection>
+        </collection>
+    </resultMap>
+
+    <select id="findUserItemsResultMap" resultMap="userItemsResultMap">
+        SELECT
+            u.*,
+            o.id         o_id,
+            o.number     o_number,
+            od.id        od_id,
+            od.items_id  od_items_id,
+            od.items_num od_items_num,
+            it.name      it_name,
+            it.price     it_price,
+            it.detail    it_detail
+        FROM user u, orders o, orders_detail od, items it
+        WHERE o.user_id = u.id AND od.orders_id = o.id AND it.id = od.items_id
+    </select>
+
     <!--使用resultType实现-->
     <select id="findUserOrder" resultType="cn.cxy.mybatis.vo.UserOrderVo">
         SELECT

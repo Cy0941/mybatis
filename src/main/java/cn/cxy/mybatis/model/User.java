@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Function: User实体：作为 mapper.xml 映射结果其字段必须与数据库中字段一一对应
@@ -28,5 +29,7 @@ public class User {
     private Date birthday;
     private Integer sex;
     private String address;
+
+    private List<Orders> ordersList;
 
 }

@@ -1,6 +1,7 @@
 package cn.cxy.mybatis.dao.mapper;
 
 import cn.cxy.mybatis.model.Orders;
+import cn.cxy.mybatis.model.User;
 import cn.cxy.mybatis.vo.UserOrderVo;
 import junit.framework.TestCase;
 import org.apache.ibatis.io.Resources;
@@ -20,6 +21,14 @@ import java.util.List;
  * @since: Thinkingbar Web Project 1.0
  */
 public class UserOrderMapperTest extends TestCase {
+
+    public void testFindUserItemsResultMap() throws Exception{
+        sqlSession = factory.openSession();
+        UserOrderMapper mapper = sqlSession.getMapper(UserOrderMapper.class);
+        List<User> userList = mapper.findUserItemsResultMap();
+        System.err.println(userList);
+        sqlSession.close();
+    }
 
     public void testFindUserOrder() throws Exception {
         sqlSession = factory.openSession();

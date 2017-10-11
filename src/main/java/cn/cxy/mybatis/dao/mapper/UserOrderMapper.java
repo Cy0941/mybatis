@@ -1,6 +1,7 @@
 package cn.cxy.mybatis.dao.mapper;
 
 import cn.cxy.mybatis.model.Orders;
+import cn.cxy.mybatis.model.User;
 import cn.cxy.mybatis.vo.UserOrderVo;
 
 import java.util.List;
@@ -20,5 +21,7 @@ public interface UserOrderMapper {
     List<Orders> findUserOrderResultMap() throws Exception;
 
     List<Orders> findOrderAndOrderDetailResultMap() throws Exception;
+
+    List<User> findUserItemsResultMap() throws Exception;
 
 }

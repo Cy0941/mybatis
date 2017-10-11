@@ -20,4 +20,7 @@ public class OrderDetails {
     private Integer itemId;
     private String itemNum;
 
+    //一对一产品
+    private Items items;
+
 }
