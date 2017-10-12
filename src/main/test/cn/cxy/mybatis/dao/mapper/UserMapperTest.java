@@ -119,6 +119,37 @@ public class UserMapperTest extends TestCase {
         System.out.println(user1.getId() + " : " + user2.getId());
     }
 
+    /**
+     * 二级缓存：mapper | mapper.xml 中 namespace 级别缓存 - myBatis 默认在 mybatisConfig.xml 中开启二级缓存；当 sqlSession 执行 commit（create | update | delete） 操作会清空二级缓存
+     *  需要同时在 mapper.xml 中进行分别开启；可同时在 select 中使用 useCache 进行更细粒度的控制
+     *
+     * @throws Exception
+     */
+    public void testCacheLevelTwo() throws Exception {
+        SqlSession sqlSession1 = factory.openSession();
+        UserMapper mapper1 = sqlSession1.getMapper(UserMapper.class);
+        User user1 = mapper1.findUserById(1);
+        sqlSession1.commit();
+        sqlSession1.close();
+
+        //sqlSession 执行 commit 操作会清空缓存
+        SqlSession sqlSession2 = factory.openSession();
+        UserMapper mapper2 = sqlSession2.getMapper(UserMapper.class);
+        User user2 = mapper2.findUserById(1);
+        sqlSession1.close();
+        user2.setAddress("四川成都");
+        mapper2.updateUser(user2);
+        sqlSession2.commit();
+        sqlSession2.close();
+
+        SqlSession sqlSession3 = factory.openSession();
+        UserMapper mapper3 = sqlSession3.getMapper(UserMapper.class);
+        User user3 = mapper3.findUserById(1);
+        sqlSession3.commit();
+        sqlSession3.close();
+        System.out.println(user1.getId() + " : " + user3.getId());
+    }
+
     public void testFindUserByName() throws Exception {
         //TODO
     }

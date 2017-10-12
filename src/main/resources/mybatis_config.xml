@@ -23,6 +23,11 @@
         <setting name="lazyLoadingEnabled" value="true"/>
         <!--将积极加载改为消极加载，及延迟加载-->
         <setting name="aggressiveLazyLoading" value="false"/>
+
+        <!--
+            二级缓存开启：二级缓存是 mapper 级别的缓存（准确的说可以根据 mapper.xml 中 namespace 属性决定是否需要新创建二级缓存） - 默认开启
+        -->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
     <!--

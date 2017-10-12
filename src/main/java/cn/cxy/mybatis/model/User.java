@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -19,10 +20,11 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
-public class User {
+public class User implements Serializable {
 
     public static final int SEX_BOY = 1;
     public static final int SEX_GIRL = 0;
+    private static final long serialVersionUID = -6424216154920410557L;
 
     private Integer id;
     private String username;
