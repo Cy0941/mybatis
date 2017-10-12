@@ -2,6 +2,7 @@ package cn.cxy.mybatis.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Function: TODO
@@ -13,6 +14,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
+@ToString
 public class OrderDetails {
 
     private Integer id;

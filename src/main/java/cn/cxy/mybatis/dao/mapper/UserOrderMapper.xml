@@ -29,16 +29,19 @@
         </collection>
     </resultMap>
 
+    <!--多对多映射实现：collection 嵌套 TODO 未实现延迟加载-->
     <resultMap id="userItemsResultMap" type="user">
-        <id column="id" property="id"/>
-        <result column="username" property="username"/>
-        <result column="birthday" property="birthday"/>
-        <result column="sex" property="sex"/>
-        <result column="address" property="address"/>
+        <id column="user_id" property="id"/>
+        <result column="u_username" property="username"/>
+        <result column="u_sex" property="sex"/>
+        <result column="u_address" property="address"/>
 
         <collection property="ordersList" ofType="orders">
-            <id column="o_id" property="id"/>
-            <result column="o_number" property="number"/>
+            <id column="id" property="id"/>
+            <result column="number" property="number"/>
+            <result column="user_id" property="userId"/>
+            <result column="createtime" property="createTime"/>
+            <result column="note" property="note"/>
 
             <collection property="orderDetails" ofType="orderDetails">
                 <id column="od_id" property="id"/>
@@ -55,12 +58,13 @@
         </collection>
     </resultMap>
 
+    <!--多对多映射查询 -->
     <select id="findUserItemsResultMap" resultMap="userItemsResultMap">
         SELECT
-            u.*,
-            o.id         o_id,
-            o.number     o_number,
-            od.id        od_id,
+            o.*,
+            u.username   u_username,
+            u.sex        u_sex,
+            u.address    u_address,
             od.items_id  od_items_id,
             od.items_num od_items_num,
             it.name      it_name,
