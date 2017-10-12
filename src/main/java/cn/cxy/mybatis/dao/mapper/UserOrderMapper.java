@@ -24,4 +24,6 @@ public interface UserOrderMapper {
 
     List<User> findUserItemsResultMap() throws Exception;
 
+    List<Orders> findUserOrdersLazyLoading() throws Exception;
+
 }

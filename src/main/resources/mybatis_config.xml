@@ -17,9 +17,13 @@
     </properties>
 
     <!--全局设置-->
-    <!--<settings>
-        <setting name="" value=""/>
-    </settings>-->
+    <settings>
+        <!--懒加载设置-->
+        <!--开启延迟加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--将积极加载改为消极加载，及延迟加载-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
 
     <!--
         别名定义：

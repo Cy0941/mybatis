@@ -58,6 +58,41 @@
         </collection>
     </resultMap>
 
+    <!--懒加载实现-->
+    <resultMap id="userOrdersLazyLoading" type="orders">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="number" column="number"/>
+        <result property="createTime" column="createtime"/>
+        <result property="note" column="note"/>
+        <!--
+        2、懒加载查询并设置 user 属性
+            懒加载设置:
+                property - 当前 resultMap 中 type 表示实体类对应的属性
+                javaType - 实际 Java 类型
+                select - 如果目标 select statement 在其他 mapper.xml 中，使用 namespace.statementId 进行引用
+                column - 当前 resultMap 中 type 中对应数据库表中的外键
+        -->
+        <association property="user" javaType="user" select="cn.cxy.mybatis.dao.mapper.UserMapper.findUserById"
+                     column="user_id"/>
+    </resultMap>
+
+    <!--resultMap & collection 实现懒加载-->
+    <select id="findUserOrdersLazyLoading" resultMap="userOrdersLazyLoading">
+        <!--
+        TODO 懒加载本质：通过分步查询以减小数据库查询压力
+          SELECT
+          orders.*,
+          (SELECT user.username FROM user WHERE user.id = orders.user_id) u_username,
+          (SELECT user.address FROM user WHERE user.id = orders.user_id) u_address
+          FROM orders;
+        -->
+
+        <!--1、仅查询订单相关信息-->
+        SELECT *
+        FROM orders
+    </select>
+
     <!--多对多映射查询 -->
     <select id="findUserItemsResultMap" resultMap="userItemsResultMap">
         SELECT

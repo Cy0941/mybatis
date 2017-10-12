@@ -22,6 +22,17 @@ import java.util.List;
  */
 public class UserOrderMapperTest extends TestCase {
 
+    public void testFindUserOrdersLazyLoading() throws Exception {
+        sqlSession = factory.openSession();
+        UserOrderMapper mapper = sqlSession.getMapper(UserOrderMapper.class);
+        List<Orders> ordersList = mapper.findUserOrdersLazyLoading();
+        for (Orders orders : ordersList) {
+            User user = orders.getUser();
+            System.out.println(user);
+        }
+        sqlSession.close();
+    }
+
     public void testFindUserItemsResultMap() throws Exception{
         sqlSession = factory.openSession();
         UserOrderMapper mapper = sqlSession.getMapper(UserOrderMapper.class);
