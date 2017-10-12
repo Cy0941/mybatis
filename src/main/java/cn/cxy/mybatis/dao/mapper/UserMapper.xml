@@ -14,8 +14,9 @@
     <!--
         针对每个mapper || namespace 级别二级缓存开启 - 默认当前 namespace 下的所有查询都会进行缓存
         type：设置缓存提供者（默认为org.apache.ibatis.cache.impl.PerpetualCache）
+        flushInterval：缓存过期时间设置，单位为毫秒；缺省值为空，即只要容量足够，永不过期
     -->
-    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache" flushInterval="60000"/>
 
     <!--在映射文件中配置sql语句-->
 
