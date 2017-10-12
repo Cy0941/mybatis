@@ -133,14 +133,14 @@ public class UserMapperTest extends TestCase {
         sqlSession1.close();
 
         //sqlSession 执行 commit 操作会清空缓存
-        SqlSession sqlSession2 = factory.openSession();
+        /*SqlSession sqlSession2 = factory.openSession();
         UserMapper mapper2 = sqlSession2.getMapper(UserMapper.class);
         User user2 = mapper2.findUserById(1);
         sqlSession1.close();
         user2.setAddress("四川成都");
         mapper2.updateUser(user2);
         sqlSession2.commit();
-        sqlSession2.close();
+        sqlSession2.close();*/
 
         SqlSession sqlSession3 = factory.openSession();
         UserMapper mapper3 = sqlSession3.getMapper(UserMapper.class);
