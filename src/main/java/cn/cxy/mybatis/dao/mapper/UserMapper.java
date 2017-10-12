@@ -30,6 +30,8 @@ public interface UserMapper {
 
     User findUserById(int id) throws Exception;
 
+    void updateUser(User user) throws Exception;
+
     List<User> findUserByName(String name) throws Exception;
 
     void deleteById(Integer id) throws Exception;

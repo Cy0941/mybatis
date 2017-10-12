@@ -169,6 +169,7 @@
         WHERE id = #{id}
     </delete>
 
+    <!--更新用户-->
     <update id="updateUser" parameterType="cn.cxy.mybatis.model.User">
         UPDATE user
         SET username = #{username}, sex = #{sex}, birthday = #{birthday}, address = #{address}

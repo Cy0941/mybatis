@@ -100,6 +100,25 @@ public class UserMapperTest extends TestCase {
         System.out.println(user);
     }
 
+    /**
+     * 一级缓存：sqlSession 级别缓存 - myBatis 默认开启一级缓存；当 sqlSession 执行 commit（create | update | delete） 操作会清空一级缓存
+     *
+     * @throws Exception
+     */
+    public void testCacheLevelOne() throws Exception {
+        sqlSession = factory.openSession();
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        User user1 = mapper.findUserById(1);
+
+        //sqlSession 执行commit操作会清空一级缓存
+        user1.setAddress("四川自贡");
+        mapper.updateUser(user1);
+        sqlSession.commit();
+
+        User user2 = mapper.findUserById(1);
+        System.out.println(user1.getId() + " : " + user2.getId());
+    }
+
     public void testFindUserByName() throws Exception {
         //TODO
     }

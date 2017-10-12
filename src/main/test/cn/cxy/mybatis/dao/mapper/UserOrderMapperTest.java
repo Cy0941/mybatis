@@ -27,6 +27,7 @@ public class UserOrderMapperTest extends TestCase {
         UserOrderMapper mapper = sqlSession.getMapper(UserOrderMapper.class);
         List<Orders> ordersList = mapper.findUserOrdersLazyLoading();
         for (Orders orders : ordersList) {
+            /*cxy 默认会使用一级缓存（sqlSession级别缓存）*/
             User user = orders.getUser();
             System.out.println(user);
         }
