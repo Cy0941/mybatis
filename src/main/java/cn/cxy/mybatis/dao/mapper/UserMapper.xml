@@ -17,6 +17,8 @@
         flushInterval：缓存过期时间设置，单位为毫秒；缺省值为空，即只要容量足够，永不过期
     -->
     <cache type="org.mybatis.caches.ehcache.EhcacheCache" flushInterval="60000"/>
+    <!--自定义使用redis缓存-->
+    <!--<cache type="cn.cxy.mybatis.cache.MybatisRedisCache" flushInterval="60000"/>-->
 
     <!--在映射文件中配置sql语句-->
 

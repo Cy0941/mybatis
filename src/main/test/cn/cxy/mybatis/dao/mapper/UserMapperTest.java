@@ -96,8 +96,11 @@ public class UserMapperTest extends TestCase {
     public void testFindUserById() throws Exception {
         sqlSession = factory.openSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        User user = mapper.findUserById(1);
-        System.out.println(user);
+        User user1 = mapper.findUserById(1);
+        //cxy 二级缓存使用：session 必须提交
+        sqlSession.commit();
+        User user2 = mapper.findUserById(1);
+        System.err.println(user1 + " : " + user2);
     }
 
     /**
@@ -121,7 +124,7 @@ public class UserMapperTest extends TestCase {
 
     /**
      * 二级缓存：mapper | mapper.xml 中 namespace 级别缓存 - myBatis 默认在 mybatisConfig.xml 中开启二级缓存；当 sqlSession 执行 commit（create | update | delete） 操作会清空二级缓存
-     *  需要同时在 mapper.xml 中进行分别开启；可同时在 select 中使用 useCache 进行更细粒度的控制
+     * 需要同时在 mapper.xml 中进行分别开启；可同时在 select 中使用 useCache 进行更细粒度的控制
      *
      * @throws Exception
      */
